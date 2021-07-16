@@ -1,2 +1,2 @@
 # ReactParisEvents
- site qui permet de trouver des évenements sur paris
+ site qui permet de trouver des évenements sur paris en react
