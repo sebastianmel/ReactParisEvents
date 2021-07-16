@@ -1,0 +1,23 @@
+.navigation {
+    
+    margin:  26px 0;
+    display: flex;
+
+    * {
+
+        text-decoration: none;
+        margin: auto;
+        padding: 10px;
+        position: relative;
+    }
+    
+    .nav-active {
+        &::after {
+            color: orangered;
+            border-bottom: 2px orangered solid;
+            
+            
+        }
+    }
+}
+// (0, 106, 255)
