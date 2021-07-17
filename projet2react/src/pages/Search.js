@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button } from 'react-bootstrap';
 import axios from "axios";
 import Navigation from "../components/Navigation";
+import Event from "../components/Event";
 import { NavLink } from 'react-router-dom';
 
 
@@ -23,7 +24,7 @@ const Search = () => {
 
         axios
             .get(
-                'https://opendata.paris.fr/api/v2/catalog/datasets/que-faire-a-paris-/records?search=' + searchValue
+                'https://opendata.paris.fr/api/v2/catalog/datasets/que-faire-a-paris-/records?search='+searchValue
             )
             .then((res) => setData(res.data.records));
 
@@ -37,7 +38,7 @@ const Search = () => {
             )
             .then((res) => setData(res.data.records));
 
-
+            
     }, []);
 
 
@@ -45,7 +46,7 @@ const Search = () => {
 
 
 
-    // console.log(data);
+    
 
 
 
@@ -63,47 +64,35 @@ const Search = () => {
             </form>
 
 
-            <br/>
+            <br />
 
             <h3>Résultats de la recherche</h3>
 
-            <br/>
+            <br />
 
+            {data &&
+                <div className="container">
+                    {data.map((offert) => (
+                        <div className="off">
+                            <Card style={{ width: '60%' }}>
+                                <Card.Img variant="top" src={offert.record.fields.cover_url} />
+                                <Card.Body>
+                                    <Card.Title>{offert.record.fields.title}</Card.Title>
+                                    <Card.Text>
+                                        {offert.record.fields.description.replace(/(<([^>]+)>)/gi, "")}
+                                    </Card.Text>
+                                    <NavLink exact to={`Event/${offert.record.id}`}>
+                                        <Button variant="primary">Plus</Button>
+                                    </NavLink>
 
-            <div className="container">
-                {data.map((offert) => (
-                    <div className="off">
-                        <Card style={{ width: '60%' }}>
-                            <Card.Img variant="top" src={offert.record.fields.cover_url} />
-                            <Card.Body>
-                                <Card.Title>{offert.record.fields.title}</Card.Title>
-                                <Card.Text>
-                                    {offert.record.fields.description.replace(/(<([^>]+)>)/gi, "")}
-                                </Card.Text>
-                                <NavLink exact to="/Event">
-                                    <Button variant="primary">Plus</Button>
-                                </NavLink>
+                                </Card.Body>
+                            </Card>
+                            <hr></hr>
 
-                            </Card.Body>
-                        </Card>
-                        <hr></hr>
+                        </div>))}
 
-                        {/* <div className="image-container">
-                            <img alt="" id="cardImg" src={offert.record.fields.cover_url}></img>
-                        </div>
-
-
-                        <div>
-                            {offert.record.fields.title} <br></br> <br></br>
-
-
-                            {offert.record.fields.description.replace(/(<([^>]+)>)/gi, "")}
-                        </div>
-
-                        <br></br> */}
-
-                    </div>))}
-            </div>
+                   </div>
+            }
         </div>
 
 
@@ -112,3 +101,5 @@ const Search = () => {
 
 
 export default Search;
+
+

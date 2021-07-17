@@ -4,7 +4,8 @@ import Fav from "./pages/Fav";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Seach from "./pages/Search";
-import Event from "./pages/Event";
+import Event from "./components/Event";
+
 
 const App = () => {
  
@@ -14,7 +15,8 @@ const App = () => {
       <Route path="/" exact component={Home} />
       <Route path="/seach" component={Seach} />
       <Route path="/favoris" component={Fav} />
-      <Route path="/event" component={Event} />
+      <Route path="/Event/:id" component={Event}/>
+      
       <Route component={NotFound} />
     </Switch>
     </BrowserRouter>

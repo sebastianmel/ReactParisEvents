@@ -33,8 +33,8 @@ const EventHome = () => {
                             <Card.Text>
                                 {eventHome.record.fields.description.replace(/(<([^>]+)>)/gi, "")}
                             </Card.Text>
-                            <NavLink exact to="/Event">
-                                <Button variant="primary">Plus</Button>
+                            <NavLink exact to={`Event/${eventHome.record.id}`}>
+                                        <Button variant="primary">Plus</Button>
                             </NavLink>
                         </Card.Body>
                     </Card>
