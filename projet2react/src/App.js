@@ -6,16 +6,17 @@ import NotFound from "./pages/NotFound";
 import Seach from "./pages/Search";
 import Event from "./components/Event";
 
-
+// Partie qui gère le changement des pages grace au Router
 const App = () => {
  
+
   return (
     <BrowserRouter>
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/seach" component={Seach} />
       <Route path="/favoris" component={Fav} />
-      <Route path="/Event/:id" component={Event}/>
+      <Route path="/event/:id" component={Event}/>
       
       <Route component={NotFound} />
     </Switch>

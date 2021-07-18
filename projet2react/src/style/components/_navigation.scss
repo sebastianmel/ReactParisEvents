@@ -1,7 +1,11 @@
+// Style de la barre de navigation
 .navigation {
     
     margin:  26px 0;
     display: flex;
+    color:white;
+    background-color: black;
+    opacity: 50%;
 
     * {
 
@@ -9,6 +13,8 @@
         margin: auto;
         padding: 10px;
         position: relative;
+        color:white;  
+        
     }
     
     .nav-active {
@@ -19,5 +25,6 @@
             
         }
     }
+    
 }
-// (0, 106, 255)
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-
+// Barre de navigation réutiliser sur toutes les pages
 const Navigation = () => {
     return (
         <div className="navigation">

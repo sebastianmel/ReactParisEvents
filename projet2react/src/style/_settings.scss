@@ -4,10 +4,28 @@
     font-family: 'Roboto Condensed', sans-serif;
     margin: 0;
     padding: 0;
+    
+}
+body{
+    background-image: url('../style/blur.jpg');
+    background-size:cover ;
+
 }
 
-h1{
+.image-container {
+    margin: auto;
+    display: flex;
     text-align: center;
+    // position: relative;
+}
+
+div{
+    border-radius: 9px;
+}
+
+h1 ,h5 ,h6 ,h2 ,h3{
+    text-align: center;
+    color: white;
 }
 input{
    
@@ -20,21 +38,49 @@ form {
 
 .off div{
     margin: auto ;
-    background: #7899D4;
-    // text-align: center;
-    
-    
-    // display: block;
-    // height: auto;
     background-color: whitesmoke;
     
 }
 
-// .container div{
-//     border: springgreen 2px solid;
-//     // margin: auto ;
-//     width: fit-content;
-//     // display: block;
-// }
+.failSearch{
+    position: absolute;
+    color: white;
+    left: 45%;
+    font-size: 15px;
+}
+
+
+@media (max-width: 376px) {
+    // .cardSizing{
+        
+    // }
+    .failSearch{
+        left: 25%;
+
+    }
+    .image-container {
+        display: block;
+    }
+
+ }
+@media (max-width: 450px) {
+    // .cardSizing{
+        
+    // }
+    .failSearch{
+        left: 20%;
+
+    }
+ }
+@media (max-width: 470px) {
+    // .cardSizing{
+        
+    // }
+    .failSearch{
+        left: 30%;
+
+    }
+ }
+
 
 

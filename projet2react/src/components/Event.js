@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import Navigation from "./Navigation";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
+
+// Fonction qui permet d'etre redirigé vers la page d'un événement ciblé
 
 function Event() {
 
@@ -23,76 +27,72 @@ function Event() {
     return (
 
         <div className="event">
-            <Navigation/>
+            <Navigation />
 
-            <h1>evenements</h1>
-            
-                <h1></h1>
-                
-                {data &&
-                    <div className="container">
-                        
+            {data &&
+                <div className="container">
 
-                            <div className="off">
 
-                                <h1>{data.fields.title} <br></br> <br></br></h1>
+                    <div className="off">
 
-                                <div className="image-container">
-                                    <div><img alt="" id="cardImg" src={data.fields.cover_url}></img></div>
-                                    <div>
-                                        <button>Ajouter au favoris</button>
-                                        
-                                        <h3>Dates :
-                                            {data.fields.date_start}
-                                            {data.fields.date_end}
-                                        </h3>
+                        <h1>{data.fields.title} <br></br> <br></br></h1>
 
-                                        <br></br>
+                        <div className="image-container">
+                            <div><img alt="" id="cardImg" style={{ width: '90%' }} src={data.fields.cover_url}></img></div>
+                            <div>
+                                <Button variant="outline-secondary">Ajouter au favoris</Button>
 
-                                        <h3>Prix :
-                                            {data.fields.price_type }
-                                            {data.fields.price_detail }
-                                        </h3>
+                                <p>Dates : <br></br>
+                                    {data.fields.date_start} <br></br>
+                                    {data.fields.date_end}
+                                </p>
 
-                                        <br></br>
 
-                                        <h3>S'y rendre :
-                                            {data.fields.adress_name}
-                                            {data.fields.adress_zipcode}
-                                        </h3>
+                                <p><br></br>
+                                    {data.fields.price_type + ":"} <br></br>
+                                    {data.fields.price_detail}
+                                </p>
 
-                                        <br></br>
 
-                                        <h3>En transports :
-                                            {data.fields.transport}
-                                        </h3>
 
-                                        <br></br>
+                                <p>S'y rendre :<br></br>
+                                    {data.fields.address_name}
+                                    ({data.fields.address_zipcode})
+                                </p>
 
-                                        <h3>Plus d'infos :
-                                            {data.fields.contact_phone}
-                                            {data.fields.contact_mail}
-                                            {data.fields.contact_facebook}
-                                        </h3>
+
+
+                                <p>En transports :<br></br>
+                                    <div>{data.fields.transport +"(a copier dans google map)"}</div>
+        
+                                </p>
+
+
+
+                                    <p>Plus d'infos : <br></br>
+                                        {"tel: " + data.fields.contact_phone} <br></br>
+                                        {"mail: " + data.fields.contact_mail} <br></br>
+                                        <a href="">{data.fields.contact_facebook}</a>
+                                    </p>
 
                                     </div>
-                                </div>
-
-
-                                <div>
-
-                                    {data.fields.lead_text.replace(/(<([^>]+)>)/gi, "")}
-                                </div>
-
-                                <br></br>
-
                             </div>
-                
+
+                            <br></br>
+                            <div>
+
+                                {data.fields.description.replace(/(<([^>]+)>)/gi, "")}
+                            </div>
+
+                            <br></br>
+
+                        </div>
+
                     </div>
             }
-        </div>
+                </div>
 
     )
 }
 
-export default Event;
+            export default Event;

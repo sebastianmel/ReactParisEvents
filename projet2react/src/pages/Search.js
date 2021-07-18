@@ -4,12 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button } from 'react-bootstrap';
 import axios from "axios";
 import Navigation from "../components/Navigation";
-import Event from "../components/Event";
 import { NavLink } from 'react-router-dom';
 
+// Page de recherche
 
-
-
+// Fonction de recherche avec pré chargements des evénements et recupération de la value de l'input "searcValue"
 
 const Search = () => {
 
@@ -30,7 +29,7 @@ const Search = () => {
 
 
     }
-
+//  Prechargement des événements
     useEffect(() => {
         axios
             .get(
@@ -48,7 +47,7 @@ const Search = () => {
 
     
 
-
+// Affichage des informations des événements dans des cards
 
     return (
         <div className="search">
@@ -59,8 +58,8 @@ const Search = () => {
             <form onSubmit={onValidateForm}>
 
                 <input type="text" ref={inputRef} ></input>
-
-                <button type="submit">Recherche</button>
+                &#160;
+                <Button type="submit" variant="outline-secondary">Recherche</Button>
             </form>
 
 
@@ -72,19 +71,22 @@ const Search = () => {
 
             {data &&
                 <div className="container">
-                    {data.map((offert) => (
+                    <p className="failSearch" >Aucun évenements trouvé...</p>
+                    {data.map((EventSearch) => (
                         <div className="off">
-                            <Card style={{ width: '60%' }}>
-                                <Card.Img variant="top" src={offert.record.fields.cover_url} />
+                            <Card className="cardSizing" style={{ width: '60%' }}>
+                                <Card.Img variant="top" src={EventSearch.record.fields.cover_url} />
                                 <Card.Body>
-                                    <Card.Title>{offert.record.fields.title}</Card.Title>
+                                    <Card.Title><strong>{EventSearch.record.fields.title}</strong></Card.Title>
                                     <Card.Text>
-                                        {offert.record.fields.description.replace(/(<([^>]+)>)/gi, "")}
+                                        {EventSearch.record.fields.date_description.replace(/(<([^>]+)>)/gi, "")} <br></br>
+                                        {EventSearch.record.fields.lead_text.replace(/(<([^>]+)>)/gi, "")}
                                     </Card.Text>
-                                    <NavLink exact to={`Event/${offert.record.id}`}>
+                                    <NavLink exact to={`Event/${EventSearch.record.id}`}>
                                         <Button variant="primary">Plus</Button>
                                     </NavLink>
-
+                                    &#160;
+                                    <Button variant="outline-secondary" >Ajouter au favoris</Button>
                                 </Card.Body>
                             </Card>
                             <hr></hr>
@@ -103,3 +105,4 @@ const Search = () => {
 export default Search;
 
 
+// onClick={setData()}

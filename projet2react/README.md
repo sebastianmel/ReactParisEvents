@@ -1,3 +1,9 @@
+# ReactParisEvents
+ site qui permet de trouver des évenements sur paris en react.
+ composé principalement de javascript, html , scss dans un environnement react.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

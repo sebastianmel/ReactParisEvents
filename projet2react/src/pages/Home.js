@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import EventHome from "../components/EventHome";
 
 
+// Page d'accueil        
 
 const Home = () => {
 
