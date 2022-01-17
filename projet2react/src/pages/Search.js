@@ -12,7 +12,7 @@ import { NavLink } from 'react-router-dom';
 
 const Search = () => {
 
-    const inputRef = useRef()
+    const inputRef = useRef();
     const [data, setData] = useState([]);
 
     function onValidateForm(event) {
@@ -26,6 +26,7 @@ const Search = () => {
                 'https://opendata.paris.fr/api/v2/catalog/datasets/que-faire-a-paris-/records?search='+searchValue
             )
             .then((res) => setData(res.data.records));
+
 
 
     }
